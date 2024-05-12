@@ -148,10 +148,7 @@ window.onload = function() {
     c.previousMonth();
   };
 }
-
 // Get element by id
 function getId(id) {
   return document.getElementById(id);
 }
-
-
