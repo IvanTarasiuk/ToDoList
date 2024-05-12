@@ -1,0 +1,60 @@
+/* Styles for the calendar */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+thead {
+    background-color: #f2f2f2;
+}
+
+td {
+    border: 1px solid #ddd;
+}
+
+.today {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.normal {
+    background-color: white;
+}
+
+.not-current {
+    color: #ccc;
+}
+
+#btnPrev, #btnNext {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnPrev:hover, #btnNext:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    display: flex;
+}
+
+/* Styles for the calendar */
+#calendarContainer {
+    flex: 1;
+    padding-right: 20px; /* Adjust spacing between calendar and events */
+}
+
+/* Styles for the events */
+#eventsContainer {
+    flex: 1;
+}
