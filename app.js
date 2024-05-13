@@ -108,7 +108,7 @@ Cal.prototype.showMonth = function(y, m) {
     if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
       html += '<td class="today">' + i + '</td>';
     } else {
-      html += '<td class="normal">' + i + '</td>';
+      html += '<td class="normal" onclick="viewEvents(' + i + ', ' + m + ', ' + y + ')">' + i + '</td>';
     }
     // Close the row on Sunday
     if ( dow == 0 ) {
@@ -148,7 +148,90 @@ window.onload = function() {
     c.previousMonth();
   };
 }
+
 // Get element by id
 function getId(id) {
   return document.getElementById(id);
+}
+
+// Function to view events for a specific date
+function viewEvents(day, month, year) {
+  var eventsForDate = getEventsForDate(day, month, year);
+  var eventsContainer = document.getElementById('eventsContainer');
+  
+  // Clear the events container
+  eventsContainer.innerHTML = '';
+
+  // Display events for the selected date
+  if (eventsForDate.length > 0) {
+    eventsForDate.forEach(function(event) {
+      var eventInfo = document.createElement('p');
+      eventInfo.textContent = event.description + ' (' + event.time + ')';
+      eventsContainer.appendChild(eventInfo);
+    });
+  } else {
+    var noEventsInfo = document.createElement('p');
+    noEventsInfo.textContent = 'Событий не запланировано';
+    eventsContainer.appendChild(noEventsInfo);
+  }
+}
+
+// Function to get events for a specific date
+function getEventsForDate(day, month, year) {
+  var events = JSON.parse(localStorage.getItem('events')) || [];
+  return events.filter(function(event) {
+    var eventDateParts = event.date.split('.');
+    return parseInt(eventDateParts[0]) === day &&
+           parseInt(eventDateParts[1]) === month + 1 &&
+           parseInt(eventDateParts[2]) === year;
+  });
+}
+
+// Show the add event menu
+function showAddEventMenu() {
+    var eventDate = prompt("Введите дату события в формате ДД.ММ.ГГГГ:", getCurrentDate());
+    var eventTime = prompt("Введите время события в формате ЧЧ:ММ:", getCurrentTime());
+    var eventImportance = prompt("Введите важность события (низкая, средняя, высокая):", "средняя");
+    var eventDescription = prompt("Введите описание события:", "");
+
+    // Create an object to represent the event
+    var event = {
+        date: eventDate,
+        time: eventTime,
+        importance: eventImportance,
+        description: eventDescription
+    };
+
+    // Save the event to localStorage
+    saveEvent(event);
+
+    // Implement functionality to handle the input values
+    console.log("Дата события:", eventDate);
+    console.log("Время события:", eventTime);
+    console.log("Важность события:", eventImportance);
+    console.log("Описание события:", eventDescription);
+}
+
+// Function to save event to localStorage
+function saveEvent(event) {
+    var events = JSON.parse(localStorage.getItem('events')) || [];
+    events.push(event);
+    localStorage.setItem('events', JSON.stringify(events));
+}
+
+// Function to get the current date in DD.MM.YYYY format
+function getCurrentDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+    return dd + '.' + mm + '.' + yyyy;
+}
+
+// Function to get the current time in HH:MM format
+function getCurrentTime() {
+    var today = new Date();
+    var hh = String(today.getHours()).padStart(2, '0');
+    var mm = String(today.getMinutes()).padStart(2, '0');
+    return hh + ':' + mm;
 }

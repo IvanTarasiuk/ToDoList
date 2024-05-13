@@ -1,60 +1,74 @@
-/* Styles for the calendar */
+/* Стили для основного контейнера */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для календаря */
+#calendarContainer {
+    margin-bottom: 20px;
+}
+
+#divCal {
+    margin-bottom: 10px;
+}
+
+/* Стили для кнопок "Предыдущий" и "Следующий" */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Дополнительные стили для кнопок */
+#btnPrev {
+    margin-right: 10px;
+}
+
+#btnNext {
+    margin-left: 10px;
+}
+
+/* Стили для таблицы календаря */
 table {
     width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-}
-
-thead {
-    background-color: #f2f2f2;
 }
 
 td {
-    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px 0;
 }
 
 .today {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
 }
 
 .normal {
-    background-color: white;
+    color: #333;
 }
 
 .not-current {
     color: #ccc;
 }
 
-#btnPrev, #btnNext {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#btnPrev:hover, #btnNext:hover {
-    background-color: #0056b3;
-}
-
-.container {
-    display: flex;
-}
-
-/* Styles for the calendar */
-#calendarContainer {
-    flex: 1;
-    padding-right: 20px; /* Adjust spacing between calendar and events */
-}
-
-/* Styles for the events */
+/* Стили для событий */
 #eventsContainer {
-    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
