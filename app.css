@@ -8,10 +8,28 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+body {
+    background: linear-gradient(to bottom, #87CEEB, #ADD8E6);
+    min-height: 100vh; /* Устанавливаем минимальную высоту body равную высоте видимой области окна браузера */
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    background-color: #cfe2f3; /* Голубой цвет фона */
+}
+
+
+
 /* Стили для календаря */
 #calendarContainer {
-    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Цвет фона с небольшой прозрачностью */
+    border-radius: 8px; /* Закругление углов */
+    padding: 20px; /* Отступы вокруг календаря */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для элемента */
+    background-color: #cfe2ff; /* Голубой цвет фона */
 }
+
 
 #divCal {
     margin-bottom: 10px;
@@ -19,7 +37,7 @@
 
 /* Стили для кнопок "Предыдущий" и "Следующий" */
 button {
-    background-color: #007bff;
+    background-color: #FFA07A;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -28,18 +46,20 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+#btnPrev, #btnNext {
+    background-color: #FA8072; /* Красный цвет кнопок */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем границы */
+    border-radius: 4px; /* Закругляем углы */
+    padding: 10px 20px; /* Отступы внутри кнопок */
+    cursor: pointer; /* Изменяем указатель при наведении */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
 }
 
-/* Дополнительные стили для кнопок */
-#btnPrev {
-    margin-right: 10px;
+#btnPrev:hover, #btnNext:hover {
+    background-color: #c82333; /* Цвет кнопок при наведении */
 }
 
-#btnNext {
-    margin-left: 10px;
-}
 
 /* Стили для таблицы календаря */
 table {
@@ -52,9 +72,9 @@ td {
 }
 
 .today {
-    background-color: #007bff;
+    background-color: #FA8072;
     color: #fff;
-    border-radius: 50%;
+    border-radius: 4px; /* Закругление углов */
 }
 
 .normal {
@@ -67,8 +87,33 @@ td {
 
 /* Стили для событий */
 #eventsContainer {
-    background-color: #fff;
+    background-color: #B0C4DE;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для сообщения "Событий не запланировано" */
+#eventsContainer p {
+    color: #375a7f; /* Тёмно-синий цвет текста */
+}
+
+/* Стили для текста событий */
+#eventsContainer .event {
+    margin-bottom: 10px; /* Отступ между событиями */
+}
+
+/* Стили для важных событий */
+#eventsContainer .event.important {
+    color: #dc3545; /* Красный цвет текста */
+}
+
+/* Стили для событий средней важности */
+#eventsContainer .event.normal {
+    color: #ffc107; /* Оранжевый цвет текста */
+}
+
+/* Стили для событий низкой важности */
+#eventsContainer .event.low {
+    color: #28a745; /* Зелёный цвет текста */
 }

@@ -106,7 +106,7 @@ Cal.prototype.showMonth = function(y, m) {
     var chkY = chk.getFullYear();
     var chkM = chk.getMonth();
     if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-      html += '<td class="today">' + i + '</td>';
+      html += '<td class="today" onclick="viewEvents(' + i + ', ' + m + ', ' + y + ')">' + i + '</td>';
     } else {
       html += '<td class="normal" onclick="viewEvents(' + i + ', ' + m + ', ' + y + ')">' + i + '</td>';
     }
@@ -133,6 +133,7 @@ Cal.prototype.showMonth = function(y, m) {
   document.getElementById(this.divId).innerHTML = html;
 };
 
+
 // When the window loads
 window.onload = function() {
 
@@ -158,7 +159,7 @@ function getId(id) {
 function viewEvents(day, month, year) {
   var eventsForDate = getEventsForDate(day, month, year);
   var eventsContainer = document.getElementById('eventsContainer');
-  
+
   // Clear the events container
   eventsContainer.innerHTML = '';
 
@@ -167,12 +168,27 @@ function viewEvents(day, month, year) {
     eventsForDate.forEach(function(event) {
       var eventInfo = document.createElement('p');
       eventInfo.textContent = event.description + ' (' + event.time + ')';
+      
+      // Add classes based on the importance of the event
+      if (event.importance === "высокая") {
+        eventInfo.classList.add('event', 'important');
+      } else if (event.importance === "средняя") {
+        eventInfo.classList.add('event', 'normal');
+      } else if (event.importance === "низкая") {
+        eventInfo.classList.add('event', 'low');
+      }
+      
       eventsContainer.appendChild(eventInfo);
     });
   } else {
     var noEventsInfo = document.createElement('p');
     noEventsInfo.textContent = 'Событий не запланировано';
+    noEventsInfo.classList.add('no-events');
     eventsContainer.appendChild(noEventsInfo);
+
+    var eventInfoElement = document.querySelector('.eventInfo');
+    eventInfoElement.classList.add('eventInfo');
+
   }
 }
 
@@ -235,3 +251,4 @@ function getCurrentTime() {
     var mm = String(today.getMinutes()).padStart(2, '0');
     return hh + ':' + mm;
 }
+
