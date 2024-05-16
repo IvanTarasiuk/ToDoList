@@ -5,45 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Список дел</title>
     <link rel="stylesheet" href="app.css">
-    <style>
-        /* Дополнительные стили для заголовка */
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Стили для кнопки "Добавить событие" */
-        #addEventButton {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        #addEventButton:hover {
-            background-color: #218838;
-        }
-    </style>
+    <script src="app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Список дел</h1> <!-- Добавленный заголовок -->
-        <button id="addEventButton" onclick="showAddEventMenu()">Добавить событие</button> <!-- Кнопка "Добавить событие" -->
-        <div id="calendarContainer">
-            <div id="divCal"></div>
-            <button id="btnPrev">Предыдущий</button>
-            <button id="btnNext">Следующий</button>
-        </div>
-        <div id="eventsContainer">
-            <!-- Сюда будет добавляться информация о событиях -->
-        </div>
-    </div>
-    <script src="app.js"></script>
+    <div id="appList"></div>
+    <script>appToDoList("appList")</script>
 </body>
 </html>

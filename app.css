@@ -1,28 +1,53 @@
 /* Стили для основного контейнера */
-.container {
+#appList {
+    background: linear-gradient(to bottom, #87CEEB, #ADD8E6);
+    position: fixed;
+    width: 100%;
+    height:100vh;
+    z-index: -999;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#appList .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-body {
-    background: linear-gradient(to bottom, #87CEEB, #ADD8E6);
-    min-height: 100vh; /* Устанавливаем минимальную высоту body равную высоте видимой области окна браузера */
-}
-
-.container {
     position: relative;
     z-index: 1;
     background-color: #cfe2f3; /* Голубой цвет фона */
 }
 
+ /* Дополнительные стили для заголовка */
+#appList h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
 
+/* Стили для кнопки "Добавить событие" */
+#appList #addEventButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#appList #addEventButton:hover {
+    background-color: #218838;
+}
 
 /* Стили для календаря */
-#calendarContainer {
+#appList #calendarContainer {
     background-color: rgba(255, 255, 255, 0.8); /* Цвет фона с небольшой прозрачностью */
     border-radius: 8px; /* Закругление углов */
     padding: 20px; /* Отступы вокруг календаря */
@@ -31,12 +56,12 @@ body {
 }
 
 
-#divCal {
+#appList #divCal {
     margin-bottom: 10px;
 }
 
 /* Стили для кнопок "Предыдущий" и "Следующий" */
-button {
+#appList button {
     background-color: #FFA07A;
     color: #fff;
     border: none;
@@ -46,7 +71,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-#btnPrev, #btnNext {
+#appList #btnPrev, #appList #btnNext {
     background-color: #FA8072; /* Красный цвет кнопок */
     color: #fff; /* Белый цвет текста */
     border: none; /* Убираем границы */
@@ -56,37 +81,37 @@ button {
     transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
 }
 
-#btnPrev:hover, #btnNext:hover {
+#appList #btnPrev:hover, #appList #btnNext:hover {
     background-color: #c82333; /* Цвет кнопок при наведении */
 }
 
 
 /* Стили для таблицы календаря */
-table {
+#appList table {
     width: 100%;
 }
 
-td {
+#appList td {
     text-align: center;
     padding: 10px 0;
 }
 
-.today {
+#appList .today {
     background-color: #FA8072;
     color: #fff;
     border-radius: 4px; /* Закругление углов */
 }
 
-.normal {
+#appList .normal {
     color: #333;
 }
 
-.not-current {
+#appList .not-current {
     color: #ccc;
 }
 
 /* Стили для событий */
-#eventsContainer {
+#appList #eventsContainer {
     background-color: #B0C4DE;
     padding: 20px;
     border-radius: 8px;
@@ -94,26 +119,26 @@ td {
 }
 
 /* Стили для сообщения "Событий не запланировано" */
-#eventsContainer p {
+#appList #eventsContainer p {
     color: #375a7f; /* Тёмно-синий цвет текста */
 }
 
 /* Стили для текста событий */
-#eventsContainer .event {
+#appList #eventsContainer .event {
     margin-bottom: 10px; /* Отступ между событиями */
 }
 
 /* Стили для важных событий */
-#eventsContainer .event.important {
+#appList #eventsContainer .event.important {
     color: #dc3545; /* Красный цвет текста */
 }
 
 /* Стили для событий средней важности */
-#eventsContainer .event.normal {
+#appList #eventsContainer .event.normal {
     color: #ffc107; /* Оранжевый цвет текста */
 }
 
 /* Стили для событий низкой важности */
-#eventsContainer .event.low {
+#appList #eventsContainer .event.low {
     color: #28a745; /* Зелёный цвет текста */
 }
